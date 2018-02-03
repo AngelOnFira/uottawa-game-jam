@@ -22,6 +22,7 @@ var on_air_time = 100
 var jumping = false
 var Anim = ""
 
+
 var prev_jump_pressed = false
 
 onready var sprite = $sprite
@@ -33,6 +34,7 @@ func _physics_process(delta):
 	var walk_left = Input.is_action_pressed("ui_left")
 	var walk_right = Input.is_action_pressed("ui_right")
 	var jump = Input.is_action_just_pressed("ui_up")
+	var crouch = Input.is_action_pressed("ui_down")
 	
 	var stop = true
 	
@@ -82,6 +84,8 @@ func _physics_process(delta):
 	var new_anim = "idle"
 	
 	if is_on_floor():
+		if crouch:
+			new_anim = "crouching"
 		if velocity.x < WALK_MIN_SPEED and velocity.x > -WALK_MIN_SPEED:
 			new_anim = "idle"
 		if velocity.x < -WALK_MIN_SPEED:
@@ -90,6 +94,8 @@ func _physics_process(delta):
 		if velocity.x > WALK_MIN_SPEED:
 			sprite.scale.x = 1
 			new_anim = "walking"
+			
+		
 	else:
 		if Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"):
 			sprite.scale.x = -1
