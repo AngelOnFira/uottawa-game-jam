@@ -11,7 +11,7 @@ var nextChunk
 var lastChunk
 var currentChunk
 var numLoadedChunk = 0
-var startChunk = preload("../Scenes/Chunks/startChunk.tscn")
+var startChunk = preload("../Scenes/Chunks/StartChunk.tscn")
 
 
 func _ready():
@@ -56,7 +56,7 @@ func _preload_chunks():
 		var file = dir.get_next()
 		if file == "":
 			break
-		elif file.begins_with("chunk"):
+		elif file.begins_with("Chunk"):
 			print("../Scenes/Chunks/" + file)
 			chunks.append(load("res://Scenes/Chunks/" + file))
 			

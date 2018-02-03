@@ -1,19 +1,19 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Map.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/KinematicBody2D.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Character_sprites/p3_walk01.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Character_sprites/p3_walk02.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Character_sprites/p3_walk03.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Character_sprites/p3_walk04.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Character_sprites/p3_walk05.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Character_sprites/p3_walk06.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Character_sprites/p3_walk07.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Character_sprites/p3_walk08.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Character_sprites/p3_walk09.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Character_sprites/p3_walk10.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Character_sprites/p3_walk11.png" type="Texture" id=13]
-[ext_resource path="res://Scenes/AnimatedSprite.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=2]
+[ext_resource path="res://Assets/CharacterSprites/p3_walk01.png" type="Texture" id=3]
+[ext_resource path="res://Assets/CharacterSprites/p3_walk02.png" type="Texture" id=4]
+[ext_resource path="res://Assets/CharacterSprites/p3_walk03.png" type="Texture" id=5]
+[ext_resource path="res://Assets/CharacterSprites/p3_walk04.png" type="Texture" id=6]
+[ext_resource path="res://Assets/CharacterSprites/p3_walk05.png" type="Texture" id=7]
+[ext_resource path="res://Assets/CharacterSprites/p3_walk06.png" type="Texture" id=8]
+[ext_resource path="res://Assets/CharacterSprites/p3_walk07.png" type="Texture" id=9]
+[ext_resource path="res://Assets/CharacterSprites/p3_walk08.png" type="Texture" id=10]
+[ext_resource path="res://Assets/CharacterSprites/p3_walk09.png" type="Texture" id=11]
+[ext_resource path="res://Assets/CharacterSprites/p3_walk10.png" type="Texture" id=12]
+[ext_resource path="res://Assets/CharacterSprites/p3_walk11.png" type="Texture" id=13]
+[ext_resource path="res://Scripts/AnimatedSprite.gd" type="Script" id=14]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -30,7 +30,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="GameScene" type="Node2D" index="0"]
+[node name="GameScene" type="Node2D"]
 
 [node name="Map" parent="." index="0" instance=ExtResource( 1 )]
 
