@@ -1,0 +1,87 @@
+[gd_resource type="TileSet" load_steps=14 format=2]
+
+[ext_resource path="res://Assets/Background/tundraMid.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Background/tundraCenter.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Background/tundraRight.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Background/tundraHillLeft.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Background/tundraHillRight.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Background/tundraHillRight2.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Background/tundraHillLeft2.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Background/tundraLeft.png" type="Texture" id=13]
+
+[resource]
+
+
+1/name = "hillleft3"
+1/texture = ExtResource( 9 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 70, 70 )
+1/is_autotile = false
+1/occluder_offset = Vector2( 35, 35 )
+1/navigation_offset = Vector2( 35, 35 )
+1/shapes = [  ]
+2/name = "hillright3"
+2/texture = ExtResource( 10 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 70, 70 )
+2/is_autotile = false
+2/occluder_offset = Vector2( 35, 35 )
+2/navigation_offset = Vector2( 35, 35 )
+2/shapes = [  ]
+3/name = "hillright2"
+3/texture = ExtResource( 11 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 70, 70 )
+3/is_autotile = false
+3/occluder_offset = Vector2( 35, 35 )
+3/navigation_offset = Vector2( 35, 35 )
+3/shapes = [  ]
+4/name = "hillleft2"
+4/texture = ExtResource( 12 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 70, 70 )
+4/is_autotile = false
+4/occluder_offset = Vector2( 35, 35 )
+4/navigation_offset = Vector2( 35, 35 )
+4/shapes = [  ]
+5/name = "hillleft"
+5/texture = ExtResource( 13 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 70, 70 )
+5/is_autotile = false
+5/occluder_offset = Vector2( 35, 35 )
+5/navigation_offset = Vector2( 35, 35 )
+5/shapes = [  ]
+6/name = "hillmid"
+6/texture = ExtResource( 3 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 0, 0, 70, 70 )
+6/is_autotile = false
+6/occluder_offset = Vector2( 35, 35 )
+6/navigation_offset = Vector2( 35, 35 )
+6/shapes = [  ]
+7/name = "hillcenter"
+7/texture = ExtResource( 4 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 70, 70 )
+7/is_autotile = false
+7/occluder_offset = Vector2( 35, 35 )
+7/navigation_offset = Vector2( 35, 35 )
+7/shapes = [  ]
+8/name = "hillright"
+8/texture = ExtResource( 5 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 0, 70, 70 )
+8/is_autotile = false
+8/occluder_offset = Vector2( 35, 35 )
+8/navigation_offset = Vector2( 35, 35 )
+8/shapes = [  ]
+

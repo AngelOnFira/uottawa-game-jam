@@ -56,6 +56,7 @@ func _unfreeze_player():
 	$Ice.hide()
 
 func _physics_process(delta):
+	_out_of_bound()
 	# Create forces
 	var force = Vector2(0, GRAVITY)
 	
@@ -137,3 +138,11 @@ func _physics_process(delta):
 	if new_anim != Anim:
 		Anim = new_anim
 		$Anim.play(Anim)
+
+func _out_of_bound():
+	var CharPosX = self.position.x
+	var CharPosY = self.position.y
+	
+	var CamPosX = self.get_parent().get_node("Map").get_node("Camera").position.x
+	if CharPosX < CamPosX - 140 or CharPosY < 0 :
+		get_tree().change_scene("res://Scenes/TitleScreen.tscn")
