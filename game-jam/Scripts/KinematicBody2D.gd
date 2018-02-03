@@ -39,6 +39,7 @@ func _ready():
 	_freeze_player()
 
 func _freeze_player():
+	print("TEST")
 	isFrozen = true
 	countdownToFreeze.stop()
 	countdownToUnfreeze.connect("timeout",self,"_unfreeze_player")

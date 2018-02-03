@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=2]
 [ext_resource path="res://Assets/CharacterSprites/p3_spritesheet.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sound/Cheerful Annoyance.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Snow/ice.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sound/Cheerful Annoyance.ogg" type="AudioStream" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -293,9 +294,15 @@ blend_times = [  ]
 
 [node name="Ice" type="Sprite" parent="KinematicBody2D" index="3"]
 
+modulate = Color( 0.643754, 0.674063, 0.792969, 0.71 )
+position = Vector2( 3.16237, 3.16237 )
+scale = Vector2( 1.42161, 1.42161 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Visibility" ]
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
 
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = 0.0
 autoplay = true
 mix_target = 0
