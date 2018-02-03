@@ -26,6 +26,33 @@ var prev_jump_pressed = false
 
 onready var sprite = $sprite
 
+var countdownToFreeze
+var countdownToUnfreeze
+var isFrozen = false
+
+func _ready():
+	countdownToUnfreeze = Timer.new()
+	add_child(countdownToUnfreeze)
+	countdownToFreeze = Timer.new()
+	add_child(countdownToFreeze)
+	_freeze_player()
+
+func _freeze_player():
+	isFrozen = true
+	countdownToFreeze.stop()
+	countdownToUnfreeze.connect("timeout",self,"_unfreeze_player")
+	countdownToUnfreeze.wait_time = 1 
+	countdownToUnfreeze.start()
+	$Ice.show()
+	
+func _unfreeze_player():
+	isFrozen = false
+	countdownToUnfreeze.stop()
+	countdownToFreeze.connect("timeout",self,"_freeze_player")
+	countdownToFreeze.wait_time = rand_range(1, 5) 
+	countdownToFreeze.start()
+	$Ice.hide()
+
 func _physics_process(delta):
 	# Create forces
 	var force = Vector2(0, GRAVITY)
