@@ -7,7 +7,6 @@
 
 [node name="Background" type="TileMap" parent="." index="0"]
 
-position = Vector2( -1, 0 )
 mode = 0
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 70, 70 )
@@ -29,7 +28,6 @@ _sections_unfolded = [ "Cell", "Transform" ]
 
 [node name="TileMap" type="TileMap" parent="." index="1"]
 
-position = Vector2( -7, 0 )
 mode = 0
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 70, 70 )
