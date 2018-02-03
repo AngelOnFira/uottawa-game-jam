@@ -25,6 +25,7 @@ var prev_jump_pressed = false
 
 
 func _physics_process(delta):
+	_out_of_bound()
 	# Create forces
 	var force = Vector2(0, GRAVITY)
 	
@@ -73,3 +74,12 @@ func _physics_process(delta):
 	
 	on_air_time += delta
 	prev_jump_pressed = jump
+
+func _out_of_bound():
+	var CharPosX = self.position.x
+	var CharPosY = self.position.y
+	
+	var CamPosX = self.get_parent().get_node("Map").get_node("Camera").position.x
+	if CharPosX < CamPosX - 140 or CharPosY < 0 :
+		get_tree().change_scene("res://Scenes/TitleScreen.tscn")
+	
