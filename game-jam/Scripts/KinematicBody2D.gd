@@ -3,16 +3,16 @@ extends KinematicBody2D
 # This demo shows how to build a kinematic controller.
 
 # Member variables
-const GRAVITY = 500.0 # pixels/second/second
+const GRAVITY = 1000.0 # pixels/second/second
 
 # Angle in degrees towards either side that the player can consider "floor"
 const FLOOR_ANGLE_TOLERANCE = 40
-const WALK_FORCE = 600
+const WALK_FORCE = 800
 const WALK_MIN_SPEED = 20
-const WALK_MAX_SPEED = 350
-const STOP_FORCE = 1300
-const JUMP_SPEED = 370
-const JUMP_MAX_AIRBORNE_TIME = 0.4
+const WALK_MAX_SPEED = 500
+const STOP_FORCE = 800
+const JUMP_SPEED = 600
+const JUMP_MAX_AIRBORNE_TIME = 0.18
 
 const SLIDE_STOP_VELOCITY = 1.0 # one pixel/second
 const SLIDE_STOP_MIN_TRAVEL = 1.0 # one pixel
@@ -20,9 +20,40 @@ const SLIDE_STOP_MIN_TRAVEL = 1.0 # one pixel
 var velocity = Vector2()
 var on_air_time = 100
 var jumping = false
+var Anim = ""
+
 
 var prev_jump_pressed = false
 
+onready var sprite = $sprite
+
+var countdownToFreeze
+var countdownToUnfreeze
+var isFrozen = false
+
+func _ready():
+	countdownToUnfreeze = Timer.new()
+	add_child(countdownToUnfreeze)
+	countdownToFreeze = Timer.new()
+	add_child(countdownToFreeze)
+	_freeze_player()
+
+func _freeze_player():
+	print("TEST")
+	isFrozen = true
+	countdownToFreeze.stop()
+	countdownToUnfreeze.connect("timeout",self,"_unfreeze_player")
+	countdownToUnfreeze.wait_time = 1 
+	countdownToUnfreeze.start()
+	$Ice.show()
+	
+func _unfreeze_player():
+	isFrozen = false
+	countdownToUnfreeze.stop()
+	countdownToFreeze.connect("timeout",self,"_freeze_player")
+	countdownToFreeze.wait_time = rand_range(1, 5) 
+	countdownToFreeze.start()
+	$Ice.hide()
 
 func _physics_process(delta):
 	_out_of_bound()
@@ -31,7 +62,8 @@ func _physics_process(delta):
 	
 	var walk_left = Input.is_action_pressed("ui_left")
 	var walk_right = Input.is_action_pressed("ui_right")
-	var jump = Input.is_action_pressed("ui_up")
+	var jump = Input.is_action_just_pressed("ui_up")
+	var crouch = Input.is_action_pressed("ui_down")
 	
 	var stop = true
 	
@@ -43,6 +75,7 @@ func _physics_process(delta):
 		if velocity.x >= -WALK_MIN_SPEED and velocity.x < WALK_MAX_SPEED:
 			force.x += WALK_FORCE
 			stop = false
+	
 	
 	if stop:
 		var vsign = sign(velocity.x)
@@ -74,6 +107,37 @@ func _physics_process(delta):
 	
 	on_air_time += delta
 	prev_jump_pressed = jump
+	
+	### Animation ###
+	
+	var new_anim = "idle"
+	
+	if is_on_floor():
+		if crouch:
+			new_anim = "crouching"
+		if velocity.x < WALK_MIN_SPEED and velocity.x > -WALK_MIN_SPEED:
+			new_anim = "idle"
+		if velocity.x < -WALK_MIN_SPEED:
+			sprite.scale.x = -1
+			new_anim = "walking"
+		if velocity.x > WALK_MIN_SPEED:
+			sprite.scale.x = 1
+			new_anim = "walking"
+			
+		
+	else:
+		if Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"):
+			sprite.scale.x = -1
+		if Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"):
+			sprite.scale.x = 1
+			
+	if velocity.y < 0:
+		new_anim = "jumping"
+	#else new_anim = "falling"
+	
+	if new_anim != Anim:
+		Anim = new_anim
+		$Anim.play(Anim)
 
 func _out_of_bound():
 	var CharPosX = self.position.x
@@ -82,4 +146,3 @@ func _out_of_bound():
 	var CamPosX = self.get_parent().get_node("Map").get_node("Camera").position.x
 	if CharPosX < CamPosX - 140 or CharPosY < 0 :
 		get_tree().change_scene("res://Scenes/TitleScreen.tscn")
-	
