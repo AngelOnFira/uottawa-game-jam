@@ -58,6 +58,7 @@ tile_data = PoolIntArray(  )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="2"]
 
+editor/display_folded = true
 position = Vector2( 273.984, 356.179 )
 input_pickable = false
 collision_layer = 1
