@@ -10,18 +10,20 @@ var chunks = []
 var nextChunk
 var lastChunk
 var currentChunk
-var numLoadedChunk = 1
+var numLoadedChunk = 0
 var startChunk = preload("../Scenes/Chunks/startChunk.tscn")
 
 
 func _ready():
-#	_preload_chunks()
+	_preload_chunks()
 	self.add_child(startChunk.instance())
+	currentChunk = startChunk.instance()
 
 func _process(delta):
-	var camX = int(self.position.x) % chunkSize
-	
+	var camX = int($Camera.position.x) % chunkSize
+
 	if (camX > 500 and mid == false):
+
 		mid = true
 		_delete_last_chunk()
 		_load_next_chunk()
@@ -30,19 +32,22 @@ func _process(delta):
 		mid = false
 	
 func _load_next_chunk():
+
 	var thisChunk
 	var random = randi() % chunks.size() - 1
 	lastChunk = currentChunk
 	currentChunk = nextChunk
-	nextChunk = chunks[random]
+	nextChunk = chunks[random].instance()
 	numLoadedChunk +=1
 	nextChunk.position.x = numLoadedChunk * 1050
+	self.add_child(nextChunk)
 
 func _delete_last_chunk():
-	lastChunk.queue_free()
+	if lastChunk:
+		lastChunk.queue_free()
 	
 func _preload_chunks():
-	var path = "../Scenes/Chunks/"
+	var path = "Scenes/Chunks/"
 	var dir = Directory.new()
 	dir.open(path)
 	dir.list_dir_begin()
@@ -51,6 +56,9 @@ func _preload_chunks():
 		var file = dir.get_next()
 		if file == "":
 			break
-		elif not file.begins_with(".") or not file.begins_with("start"):
-			chunks.append(load(file))
+		elif file.begins_with("Chunk"):
+			print("../Scenes/Chunks/" + file)
+			chunks.append(load("res://Scenes/Chunks/" + file))
+			
 	dir.list_dir_end()
+	print (chunks)
