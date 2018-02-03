@@ -13,5 +13,4 @@ func _ready():
 
 
 func _process(delta):
-	self.position.x += 312*delta
-
+	self.position.x += min(200 * delta + (self.position.x * delta * 0.05), 8)

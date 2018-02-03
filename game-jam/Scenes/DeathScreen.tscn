@@ -13,7 +13,7 @@ use_filter = false
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[node name="DeathScreen" type="Node" index="0"]
+[node name="DeathScreen" type="Node"]
 
 script = ExtResource( 1 )
 
